@@ -1,0 +1,22 @@
+[project]
+name = "news-api"
+version = "0.1.0"
+description = "API para análise de noticias referente a máteria de Fábrica de Software"
+authors = [
+    {name = "Heithor",email = "contato.hecthorur@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "python-dotenv (>=1.0.1,<2.0.0)",
+    "requests (>=2.32.3,<3.0.0)",
+    "google-generativeai (>=0.8.4,<0.9.0)",
+    "transformers (>=4.48.2,<5.0.0)",
+    "flask (>=3.1.0,<4.0.0)",
+    "torch (>=2.6.0,<3.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
