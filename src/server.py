@@ -1,3 +1,4 @@
+import re
 from flask import Flask, jsonify, request
 from dotenv import load_dotenv
 from src.provider.news_api_handler import NewsApiHandler
@@ -12,12 +13,12 @@ app = Flask(__name__)
 @app.route('/search-news', methods=['GET'])
 def search_news():
     tokens = request.args.get("tokens")
-    invalid_separators = [';', '-', '_', '[', ']']
+    pattern = r'^(?:(?:[a-zA-Z0-9áéíóúãõâêîôûàèìòùäëïöüçñ]+(?:,[a-zA-Z0-9áéíóúãõâêîôûàèìòùäëïöüçñ]+)*)?|(?:[a-zA-Záéíóúãõâêîôûàèìòùäëïöüçñ]+(?:,[a-zA-Záéíóúãõâêîôûàèìòùäëïöüçñ]+)*))$'
 
     if not tokens:
         return jsonify({"error": "Informe ao menos um token"}), 400
     
-    if any(sep in tokens for sep in invalid_separators):
+    if not re.match(pattern, tokens):
         return jsonify({"error": "Tokens devem ser separados por vírgula"}), 400
 
     news_handler = NewsApiHandler()
