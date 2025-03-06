@@ -1,7 +1,12 @@
-# URL da API
+# Informações sobre a API
 
-## Demonstração
+### Template de URL para requisição
 
 ```
 http://localhost:3000/search-news?tokens=PS5,Trump
+```
+
+### Comando para executar os testes:
+```
+pytest -s -v
 ```

@@ -1,5 +1,6 @@
 import re
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 from dotenv import load_dotenv
 from src.provider.news_api_handler import NewsApiHandler
 from src.provider.gemini_api_handler import GeminiApiHandler
@@ -9,6 +10,7 @@ from src.controllers.news_sentiment_analyzer_controller import NewsSentimentAnal
 load_dotenv()
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/search-news', methods=['GET'])
 def search_news():
